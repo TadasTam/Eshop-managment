@@ -1,0 +1,52 @@
+[1mdiff --git a/detalesne_informacija_uzsakymo.php b/detalesne_informacija_uzsakymo.php[m
+[1mindex 8374397..b0f43cc 100644[m
+[1m--- a/detalesne_informacija_uzsakymo.php[m
+[1m+++ b/detalesne_informacija_uzsakymo.php[m
+[36m@@ -32,7 +32,7 @@[m
+ 		exit;[m
+ 	}[m
+ [m
+[31m-	$dbc= new mysqli("localhost", "stud", "stud", "vartvald");[m
+[32m+[m	[32m$dbc= new mysqli("localhost", "root", "", "vartvald");[m
+ 	$id = $_GET['id'];[m
+ 	$sql_owner_of_order = "SELECT fk_vartotojo_id FROM pristatymai WHERE id = $id";[m
+ 	$result = mysqli_query($dbc, $sql_owner_of_order);[m
+[1mdiff --git a/pristatymas.php b/pristatymas.php[m
+[1mindex 62b8644..bcc67b8 100644[m
+[1m--- a/pristatymas.php[m
+[1m+++ b/pristatymas.php[m
+[36m@@ -35,7 +35,7 @@[m
+ 	echo "<center><h1>Tavo užsakymai</h1></center>";[m
+     echo "</td></tr></table>";[m
+ [m
+[31m-	$dbc= new mysqli("localhost", "stud", "stud", "vartvald");[m
+[32m+[m	[32m$dbc= new mysqli("localhost", "root", "", "vartvald");[m
+ 	$userid = $_SESSION['userid'];[m
+ 	$sql = "SELECT p.id, p.data, p.kaina, p.prekiu_kiekis, p.fk_pristatymo_id, budai.budas  FROM pirkimai AS p INNER JOIN apmokejimas AS a ON p.fk_apmokejimo_budo_id = a.id INNER JOIN apmokejimo_budai AS budai ON a.apmokejimo_budas = budai.id WHERE fk_vartotojas_id = '$userid' ORDER BY p.data DESC";[m
+     [m
+[1mdiff --git a/uzsakymo_info_keitimas.php b/uzsakymo_info_keitimas.php[m
+[1mindex e338519..ed510da 100644[m
+[1m--- a/uzsakymo_info_keitimas.php[m
+[1m+++ b/uzsakymo_info_keitimas.php[m
+[36m@@ -49,7 +49,7 @@[m
+ [m
+ 	echo "<center><div class='container mt-3'>";[m
+ 	echo "<h1 style='text-aling:left'>Užsakymo ID: ".$id." informacijos redagavimas</h1><br>";[m
+[31m-	$dbc= new mysqli("localhost", "stud", "stud", "vartvald");[m
+[32m+[m	[32m$dbc= new mysqli("localhost", "root", "", "vartvald");[m
+ 	$userid = $_SESSION['userid'];[m
+ 	$sql = "SELECT p.id, p.data, p.kaina, p.prekiu_kiekis, p.fk_pristatymo_id, budai.budas FROM pirkimai AS p INNER JOIN apmokejimas AS a ON p.fk_apmokejimo_budo_id = a.id INNER JOIN apmokejimo_budai AS budai ON a.apmokejimo_budas = budai.id WHERE p.id = $id ORDER BY p.data DESC";[m
+ 	$result = mysqli_query($dbc, $sql);[m
+[1mdiff --git a/uzsakymu_redagavimas.php b/uzsakymu_redagavimas.php[m
+[1mindex 6027093..6c60583 100644[m
+[1m--- a/uzsakymu_redagavimas.php[m
+[1m+++ b/uzsakymu_redagavimas.php[m
+[36m@@ -66,7 +66,7 @@[m [mfunction myFunction() {[m
+ [m
+     echo "</td></tr></table>";[m
+ [m
+[31m-	$dbc= new mysqli("localhost", "stud", "stud", "vartvald");[m
+[32m+[m	[32m$dbc= new mysqli("localhost", "root", "", "vartvald");[m
+ 	$userid = $_SESSION['userid'];[m
+ 	$sql = "SELECT p.id, p.data, p.kaina, p.prekiu_kiekis, p.fk_pristatymo_id, budai.budas FROM pirkimai AS p LEFT JOIN apmokejimas AS a ON p.fk_apmokejimo_budo_id = a.id LEFT JOIN apmokejimo_budai AS budai ON a.apmokejimo_budas = budai.id ORDER BY p.id";[m
+     [m
